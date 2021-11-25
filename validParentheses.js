@@ -33,21 +33,27 @@
 // 1 <= s.length <= 104
 // s consists of parentheses only '()[]{}'.
 let hashmap = {
-  "(" : ")",
-  "[" : "]",
-  "{" : "}"
+  ")" : "(",
+  "]" : "[",
+  "}" : "{"
 }
 
 var isValid = function(s) {
-    
-  let stack = [];
+  
+let stack = [];
 
-  for(let i = 0; i < s.length; i++){
-    let parens = s[i];
-    let next = s[i+1]
-    console.log(parens, next);
-z
-      
-    }
-    
-};
+if(s.length <=  1){
+    return false;
+}
+  
+for(let i = 0; i < s.length; i++){
+  
+  if(s[i] === "(" || s[i] === "[" || s[i] === "{" ){
+      stack.push(s[i]);
+  } 
+  if(hashmap[s[i]] === stack[stack.length - 1]){
+      stack.pop();
+  }    
+}
+return stack.length ?  false : true;
+}
